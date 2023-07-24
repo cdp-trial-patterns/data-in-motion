@@ -6,8 +6,8 @@ You have been tasked with filtering a noisy stream of syslog events which are av
 
 ## 1.1 Open ReadyFlow & start Test Session
 
-1. Navigate to DataFlow
-2. Navigate to the ReadyFlow Gallery
+1. Navigate to **DataFlow**
+2. Navigate to the **ReadyFlow Gallery**
 3. Explore the ReadyFlow Gallery
 
 ---
@@ -21,7 +21,7 @@ The ReadyFlow Gallery is where you can find out-of-box templates for common data
 5. Click on “Create New Draft” to open the ReadyFlow in the Designer
 6. Select the only available workspace and give your draft a name
 7. Click Create. You will be forwarded to the Designer
-8. Start a Test Session by either clicking on the _start a test session link_ in the banner or going to _Flow Options_ and selecting _Start_ in the Test Session section.
+8. Start a Test Session by either clicking on the _start a test session_ link in the banner or going to _Flow Options_ and selecting _Start_ in the Test Session section.
 9. In the Test Session creation wizard, select the latest NiFi version and click _Start Test Session_. Notice how the status at the top now says “Initializing Test Session”.
 
 ---
@@ -33,13 +33,12 @@ Test Sessions provision infrastructure on the fly and allow you to start and sto
 
 ## 1.2 Modifying the flow to read syslog data
 
-The flow consists of three processors and looks very promising for our use case. The first processor reads data from a Kafka topic, the second processor allows us to filter the events before the third processor writes the filtered events to another Kafka topic.
-All we have to do now to reach our goal is to customize its configuration to our use case.
+The flow consists of three processors and looks very promising for our use case. The first processor reads data from a Kafka topic, the second processor allows us to filter the events before the third processor writes the filtered events to another Kafka topic. All we have to do now to reach our goal is to customize its configuration to our use case.
 
 ### 1. Provide values for predefined parameters
 
 - a. Navigate to _Flow Options_ → _Parameters_
-- b. Select all parameters that show No value set and provide the following values
+- b. Select all parameters that show _No value set_ and provide the following values
 
 | Name                       | Description                                    | Value                                                                                |
 | -------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------ |
@@ -56,21 +55,21 @@ All we have to do now to reach our goal is to customize its configuration to our
 | Schema Name                |                                                | syslog                                                                               |
 | Schema Registry Hostname   | Comma-separated list of Kafka Broker addresses | \<Hostname of Schema Registry service. Copy from Trial Manager homepage\>            |
 
-- c. Click Apply Changes to save the parameter values
+- c. Click _Apply Changes_ to save the parameter values
 
 ### 2. Start Controller Services
 
-- a. Navigate to _Flow Options_ → _Services_
+- a. Once your test session has started, navigate to _Flow Options_ → _Services_
 - b. Select _CDP_Schema_Registry_ service and click _Enable Service and Referencing Components_ action
 
      ![service-and-referencing-components.png](images/service-and-referencing-components.png)
 
-- c. Start from the top of the list and enable all remaining Controller services
+- c. Start from the top of the list and enable all remaining Controller services as needed
 - d. Make sure all services have been enabled
 
      ![enable-services-kafka-filter-to-kafka.png](images/enable-services-kafka-filter-to-kafka.png)
 
-Navigate back to the Flow Designer canvas by clicking on the _Back To Flow Designer_ link at the bottom of the screen.
+ Navigate back to the Flow Designer canvas by clicking on the _Back To Flow Designer_ link at the top of the screen.
 
 ### 3. *Start the _ConsumeFromKafka_* processor using the right click action menu or the _Start_ button in the configuration drawer if it hasn’t been started automatically.
 
@@ -120,7 +119,7 @@ The _Data Viewer_ displays the content of the selected flow file and shows you t
 
 - a. Return to the Flow Designer by closing the Data Viewer tab and clicking _Back To Flow Designer_ in the _List Queue_ screen.
 
-- b. Select the _Filter Events_ processor on the canvas. We are using a _QueryRecord_ processor to filter out low severity events. The _QueryRecord_ processor is very flexible and can run several filtering or routing rules at once.
+- b. Select the _Filter Events_ processor on the canvas. We will be using a _QueryRecord_ processor to filter out low severity events. The _QueryRecord_ processor is very flexible and can run several filtering or routing rules at once.
 
      ![filter-events-processor-stopped.png](images/filter-events-processor-stopped.png)
 
@@ -199,7 +198,7 @@ The _Catalog_ is the central repository for all your deployable flow definitions
 
 ### 1. Locate your flow definition in the Catalog
 
-- a. Make sure you have navigated to the Catalog
+- a. Make sure you have navigated to the _Catalog_
 
  ![catalog-nav.png](images/catalog-nav.png)
 
@@ -221,7 +220,7 @@ The Deployment Wizard guides you through a six step process to create a flow dep
 
 - b. The **_NiFi Configuration_** screen allows you to customize the runtime that will execute your flow. You have the opportunity to pick from various released NiFi versions.
 
-     Select the _Latest Version_ and make sure _Automatically start flow upon successful deployment_ is checked.
+     Change the NiFi version to the **_Previous Version_** and make sure _Automatically start flow upon successful deployment_ is checked.
 
      Click _Next_.
 
@@ -233,7 +232,7 @@ The Deployment Wizard guides you through a six step process to create a flow dep
 
  You should now only see one parameter - the _CDP Workload User Password_ parameter which is sensitive. Sensitive parameter values are removed when you publish a flow to the catalog to make sure passwords don’t leak.
 
- Provide your _CDP Workload User Password_ and click _Next_ to continue.
+ Provide the _CDP Workload User Password_ (the password for _srv_nifi-kafka-ingest_ user) and click _Next_ to continue.
 
   ![cdp-workload-user-password-value.png](images/cdp-workload-user-password-value.png)
 
@@ -274,16 +273,6 @@ Add the following KPI
 
 - f. In the **Review** page, review your deployment details.
 
- Notice that in this page there's a **>_ View CLI Command** link. You will use the information in the page in the next section to deploy a flow using the CLI. For now you just need to save the script and dependencies provided there:
-
- - Click on the **>_ View CLI Command** link and familiarize yourself with the content.
- - Download the 2 JSON dependency files by click on the download button:
-   - Flow Deployment Parameters JSON
-   - Flow Deployment KPIs JSON
- - Copy the command at the end of this page and save that in a file called **deploy.sh**
- - Close the **Equivalent CDP CLI Command** tab.
-
- 
 - g. Click **Deploy** to initiate the flow deployment!
 
 - h. You are redirected to the Deployment Dashboard where you can monitor the progress of your deployment. Creating the deployment should only take a few minutes.
@@ -293,3 +282,63 @@ Add the following KPI
 - i. Congratulations! Your flow deployment has been created and is already processing Syslog events!
 
      ![deployed.png](images/deployed.png)
+
+## 1.5 Monitoring your flow deployment
+
+#### 1. Notice how the dashboard shows you the data rates at which a deployment currently receives and sends data. The data is also visualized in a graph that shows the two metrics over time.
+
+#### 2. Change the _Metrics Window_ setting at the top right. You can visualize as much as 24 hours.
+
+#### 3. Click on the _Critical Syslogs - Prod_ deployment. The side panel opens and shows more detail about the deployment. On the _KPIs_ tab it will show information about the KPIs that you created when deploying the flow.
+
+### Using the two KPIs _Bytes Received_ and _Data Out_ we can observe that our flow is filtering out data as expected since it reads more than it sends out.
+
+ ![kpi-metrics.png](images/kpi-metrics.png)
+
+#### 4. Switch to the _System Metrics_ tab where you can observe the current CPU utilization rate for the deployment. Our flow is not doing a lot of heavy transformation, so CPU utilization shouldn’t be too high.
+
+#### 5. Close the side panel by clicking anywhere on the Dashboard.
+
+#### 6. Notice how your _Critical Syslogs - Prod_ deployment shows _Concerning Health_ status. Hover over the warning icon and click _View Details_.
+
+ ![concerning-health.png](images/concerning-health.png)
+
+#### 7. You will be redirected to the _Alerts_ tab of the deployment. Here you get an overview of active and past alerts and events. Expand the Active Alert to learn more about its cause.
+
+![active-alert.png](images/active-alert.png)
+
+#### After expanding the alert, it is clear that it is caused by a KPI threshold breach for sending less than 1MB/s to external systems as defined earlier when you created the deployment.
+
+## 1.6 Managing your flow deployment
+
+#### 1. Click on the _Critical Syslogs - Prod_ deployment in the Dashboard. In the side panel, click _Manage Deployment_ at the top right.
+
+ ![manage-deployment.png](images/manage-deployment.png)
+
+#### 2. You are now being redirected to the _Deployment Manager_. The Deployment Manager allows you to reconfigure the deployment and modify KPIs, modify the number of NiFi nodes or turn auto-scaling on/off or update parameter values.
+
+ ![deployment-manager.png](images/deployment-manager.png)
+
+#### 3. Explore NiFi UI for deployment. Click the _Actions_ menu and click on _View in NiFi_.
+
+ ![view-in-nifi.png](images/view-in-nifi.png)
+
+#### 4. You are being redirected to the NiFi cluster running the flow deployment. You can use this view for in-depth troubleshooting. Users can have read-only or read/write permissions to the flow deployment.
+
+ ![nifi-kafka.png](images/nifi-kafka.png)
+
+#### 5. Go back to the Deployment Manager expand the Actions menu and click on _Change NiFi Runtime Version”_
+
+![change-nifi-version.png](images/change-nifi-version.png)
+
+#### 6. Looks like we’re running an older version of NiFi. Let’s upgrade to the latest! Select the latest version from the dropdown and click “Update”.
+
+#### Note: If you chose the latest NiFi version when creating the deployment, you can use the _Update_ action to downgrade to the previous NiFi version too.
+
+#### You are being redirected to the Dashboard and can monitor the upgrade process. Upgrading NiFi versions is as simple as that! One click!
+
+![update-nifi-version.png](images/update-nifi-version.png)
+
+### Congratulations, you have completed this use case! While the NiFi version of your deployment is being upgraded, feel free to proceed to the next use case!
+
+![deployment-upraded.png](images/deployment-upraded.png)
