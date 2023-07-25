@@ -53,7 +53,7 @@ The flow consists of three processors and looks very promising for our use case.
 | Kafka Producer ID          |                                                | cdf                                                                                  |
 | Kafka Source Topic         |                                                | syslog_avro                                                                          |
 | Schema Name                |                                                | syslog                                                                               |
-| Schema Registry Hostname   | Comma-separated list of Kafka Broker addresses | \<Hostname of Schema Registry service. Copy from Trial Manager homepage\>            |
+| Schema Registry Hostname   |                                                | \<Hostname of Schema Registry service. Copy from Trial Manager homepage\>            |
 
 - c. Click _Apply Changes_ to save the parameter values
 
