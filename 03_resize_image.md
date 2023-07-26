@@ -88,7 +88,7 @@ The deployment of the flow as a function will have to be done within your cloud 
 
 20. Change the “Evaluation Mode” property value to “Entire text” and click _Apply_ to save your changes.
 
-21. Connect the _EncodeContent_ processor to the _ReplaceText_ processor and select the _succes_s relationship for the connection.
+21. Connect the _EncodeContent_ processor to the _ReplaceText_ processor and select the _success_ relationship for the connection.
 
 22. Drag and drop an output port named **output**.
 
