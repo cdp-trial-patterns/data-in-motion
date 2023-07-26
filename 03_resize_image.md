@@ -114,7 +114,6 @@ The deployment of the flow as a function will have to be done within your cloud 
 
  ![flow-crn.png](images/flow-crn.png)
 
- You can now go directly to step 3.2.1.
 
 
 ## 3.2 Deploying the flow as a function
@@ -128,7 +127,7 @@ First thing first, go into DataFlow Functions and download the binary for runnin
 This should download a binary with a name similar to:
 
 ```
-naaf-aws-lambda-1.0.0.2.3.7.0-100-bin.zip
+naaf-aws-lambda-1.0.0.2.3.9.0-24-bin.zip
 ```
 
 Once you have the binary, make sure, you also have:
