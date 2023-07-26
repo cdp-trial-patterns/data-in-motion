@@ -120,7 +120,7 @@ The deployment of the flow as a function will have to be done within your cloud 
 
 ### 3.2.1 Deploying the flow in AWS Lambda
 
-First thing first, go into DataFlow Functions and download the binary for running DataFlow Functions in AWS Lambda:
+First things first, go into DataFlow Functions and download the binary for running DataFlow Functions in AWS Lambda:
 
 ![aws-lamba-binary.png](images/aws-lamba-binary.png)
 
@@ -138,3 +138,39 @@ Once you have the binary, make sure, you also have:
 In order to speed up the deployment, we’re going to leverage some scripts to automate the deployments. It assumes that your AWS CLI is properly configured locally on your laptop and you can use the jq command for reading JSON payloads. You can now follow the instructions from this page [here](https://docs.cloudera.com/dataflow/cloud/quickstart-functions/topics/cdf-functions-qs-aws-lambda.html).
 
 However, if you wish to deploy the flow in AWS Lambda manually, you can follow the steps described [here](https://docs.cloudera.com/dataflow/cloud/aws-lambda-functions/topics/cdf-create-aws-lambda-function.html).
+
+### 3.2.2 Invoke the AWS Lambda function
+
+1. Open the AWS Console UI and go to your Lambda.
+
+2. Find the published version of the function and add an API Gateway trigger with the following configuration:
+
+ ![cdf-lambda-add-trigger.png](images/cdf-lambda-add-trigger.png)
+
+ Click _Add_.
+
+3. This will give you the endpoint on which the Lambda is listening. For example:
+
+ ```
+ https://aa2q99qo3i.execute-api.eu-west-2.amazonaws.com/default/resizeimage
+ ```
+
+4. Send a request to your function using curl:
+
+ ```
+ curl -X POST https://aa2q99qo3i.execute-api.eu-west-2.amazonaws.com/default/resizeimage \
+ -H "Content-Type: image/png" \
+ -H "resize-width: 400" \
+ -H "resize-height: 200" \
+ --data-binary "@/Users/alim/Desktop/test.png" \
+ --output /tmp/my_resized_image.png
+ ```
+
+---
+**Notes:**
+
+The first attempt may fail due to a cold start and timeout (30 sec timeout on the API Gateway). A subsequent retry after a minute should work and should return the resized image much faster.
+
+The function will be open to the internet. Make sure to secure it if you want to keep it running (this is done when creating the API Gateway trigger) or delete everything once you are done.
+
+---
