@@ -38,7 +38,7 @@ The deployment of the flow as a function will have to be done within your cloud 
  ![evaluatejsonpath-connect.png](images/evaluatejsonpath-connect.png)
 
 6. Drag and drop another _EvaluateJsonPath_ processor onto the canvas and name it _RetrieveContent_. This one will be used to retrieve the content of the body field from the payload we received and use it as the new content of the FlowFile. This field contains the actual representation of the image we have been sending over HTTP with Base 64 encoding.
-7. Add a new property called _body_ with the value _$._body_
+7. Add a new property called _body_ with the value _$.body_
 
  ```
 	body => $.body
@@ -116,8 +116,6 @@ The deployment of the flow as a function will have to be done within your cloud 
 
  You can now go directly to step 3.2.1.
 
-### 3.1.2 Flow for GCP
-### 3.1.3 Flow for Azure
 
 ## 3.2 Deploying the flow as a function
 
