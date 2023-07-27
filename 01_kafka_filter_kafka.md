@@ -40,20 +40,20 @@ The flow consists of three processors and looks very promising for our use case.
 - a. Navigate to _Flow Options_ → _Parameters_
 - b. Select all parameters that show _No value set_ and provide the following values
 
-| Name                       | Description                                    | Value                                                                                |
-| -------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------ |
-| CDP Workload User          | CDP Workload User                              | srv_nifi-kafka-ingest                                                                |
-| CDP Workload User Password |                                                | \<Copy the value for 'nifi-kafka-ingest-password' from Trial Manager homepage\>                                                 |
-| Data Input Format          |                                                | AVRO                                                                                 |
-| Data Output Format         |                                                | JSON                                                                                 |
-| Filter Rule                | Filter Rule                                    | SELECT * FROM FLOWFILE                                                               |
-| Kafka Broker Endpoint      | Comma-separated list of Kafka Broker addresses | \<Comma-separated list of Kafka Broker addresses. Copy the value for 'kafka_broker' from Trial Manager homepage\> |
-| Kafka Consumer Group ID    |                                                | cdf                                                                                  |
-| Kafka Destination Topic    |                                                | syslog_critical                                                                      |
-| Kafka Producer ID          |                                                | cdf                                                                                  |
-| Kafka Source Topic         |                                                | syslog_avro                                                                          |
-| Schema Name                |                                                | syslog                                                                               |
-| Schema Registry Hostname   |                                                | \<Hostname of Schema Registry service. Copy the value for 'schema_registry_host_name' from Trial Manager homepage\>            |
+| Name                       | Value                                                                                                               |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| CDP Workload User          | srv_nifi-kafka-ingest                                                                                               |
+| CDP Workload User Password | \<Copy the value for 'nifi-kafka-ingest-password' from Trial Manager homepage\>                                     |
+| Data Input Format          | AVRO                                                                                                                |
+| Data Output Format         | JSON                                                                                                                |
+| Filter Rule                | SELECT * FROM FLOWFILE                                                                                              |
+| Kafka Broker Endpoint      | \<Comma-separated list of Kafka Broker addresses. Copy the value for 'kafka_broker' from Trial Manager homepage\>   |
+| Kafka Consumer Group ID    | cdf                                                                                                                 |
+| Kafka Destination Topic    | syslog_critical                                                                                                     |
+| Kafka Producer ID          | cdf                                                                                                                 |
+| Kafka Source Topic         | syslog_avro                                                                                                         |
+| Schema Name                | syslog                                                                                                              |
+| Schema Registry Hostname   | \<Hostname of Schema Registry service. Copy the value for 'schema_registry_host_name' from Trial Manager homepage\> |
 
 - c. Click _Apply Changes_ to save the parameter values
 
