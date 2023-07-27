@@ -131,7 +131,9 @@ The _Data Viewer_ displays the content of the selected flow file and shows you t
 
 - e. Modify the parameter value to:
 
+     ``` 
      SELECT * FROM FLOWFILE WHERE severity <= 2
+     ```
 
      ![filter-rule-high-severity.png](images/filter-rule-high-severity.png)
 
@@ -252,8 +254,8 @@ Add the following KPI
 - KPI Scope: **Entire Flow**
 - Metric to Track: **Data Out**
 - Alerts:
- - Trigger alert when metric is less than: **1 MB/sec**
- - Alert will be triggered when metrics is outside the boundary(s) for: **1 Minute**
+  - Trigger alert when metric is less than: **1 MB/sec**
+  - Alert will be triggered when metrics is outside the boundary(s) for: **1 Minute**
 
    ![kpi-entire-flow.png](images/kpi-entire-flow.png)
 
@@ -262,8 +264,8 @@ Add the following KPI
 - Processor Name: **ConsumeFromKafka**
 - Metric to Track: **Bytes Received**
 - Alerts:
- - Trigger alert when metric is less than: **512 KBytes**
- - Alert will be triggered when metrics is outside the boundary(s) for: **30 seconds**
+  - Trigger alert when metric is less than: **512 KBytes**
+  - Alert will be triggered when metrics is outside the boundary(s) for: **30 seconds**
 
    ![kpi-processor.png](images/kpi-processor.png)
 
