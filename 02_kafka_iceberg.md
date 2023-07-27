@@ -167,7 +167,6 @@ Our data warehouse team has created an Iceberg table that they want us to ingest
     }
     }
 ]
-
 ```
 
 ### 15. Scroll to _Relationships_ and select _Terminate_ for the failure, original relationships and click _Apply_.
