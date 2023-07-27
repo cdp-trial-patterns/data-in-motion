@@ -27,7 +27,7 @@ The ReadyFlow Gallery is where you can find out-of-box templates for common data
 ---
 **Info:**
 
-Test Sessions provision infrastructure on the fly and allow you to start and stop individual processors and send data through your flow By running data through processors step-by-step and using the data viewer as needed, you’re able to validate your processing logic during development in an iterative way without having to treat your entire data flow as one deployable unit.
+Test Sessions provision infrastructure on the fly and allow you to start and stop individual processors and send data through your flow. By running data through processors step-by-step and using the data viewer as needed, you’re able to validate your processing logic during development in an iterative way without having to treat your entire data flow as one deployable unit.
 
 ---
 
@@ -43,17 +43,17 @@ The flow consists of three processors and looks very promising for our use case.
 | Name                       | Description                                    | Value                                                                                |
 | -------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------ |
 | CDP Workload User          | CDP Workload User                              | srv_nifi-kafka-ingest                                                                |
-| CDP Workload User Password |                                                | \<Copy from Trial Manager homepage\>                                                 |
+| CDP Workload User Password |                                                | \<Copy the value for 'nifi-kafka-ingest-password' from Trial Manager homepage\>                                                 |
 | Data Input Format          |                                                | AVRO                                                                                 |
 | Data Output Format         |                                                | JSON                                                                                 |
 | Filter Rule                | Filter Rule                                    | SELECT * FROM FLOWFILE                                                               |
-| Kafka Broker Endpoint      | Comma-separated list of Kafka Broker addresses | \<Comma-separated list of Kafka Broker addresses. Copy from Trial Manager homepage\> |
+| Kafka Broker Endpoint      | Comma-separated list of Kafka Broker addresses | \<Comma-separated list of Kafka Broker addresses. Copy the value for 'kafka_broker' from Trial Manager homepage\> |
 | Kafka Consumer Group ID    |                                                | cdf                                                                                  |
 | Kafka Destination Topic    |                                                | syslog_critical                                                                      |
 | Kafka Producer ID          |                                                | cdf                                                                                  |
 | Kafka Source Topic         |                                                | syslog_avro                                                                          |
 | Schema Name                |                                                | syslog                                                                               |
-| Schema Registry Hostname   |                                                | \<Hostname of Schema Registry service. Copy from Trial Manager homepage\>            |
+| Schema Registry Hostname   |                                                | \<Hostname of Schema Registry service. Copy the value for 'schema_registry_host_name' from Trial Manager homepage\>            |
 
 - c. Click _Apply Changes_ to save the parameter values
 
@@ -232,7 +232,7 @@ The Deployment Wizard guides you through a six step process to create a flow dep
 
  You should now only see one parameter - the _CDP Workload User Password_ parameter which is sensitive. Sensitive parameter values are removed when you publish a flow to the catalog to make sure passwords don’t leak.
 
- Provide the _CDP Workload User Password_ (the password for _srv_nifi-kafka-ingest_ user) and click _Next_ to continue.
+ Provide the _CDP Workload User Password_ (the value for 'nifi-kafka-ingest password' from the Trial Manager homepage) and click _Next_ to continue.
 
   ![cdp-workload-user-password-value.png](images/cdp-workload-user-password-value.png)
 
