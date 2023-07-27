@@ -159,13 +159,6 @@ However, if you wish to deploy the flow in AWS Lambda manually, you can follow t
 
  Click _Add_.
 
- ---
- **Note:**
-
- The function will be open to the internet. Make sure to secure it if you want to keep it running (this is done when creating the API Gateway trigger) or delete everything once you are done.
-
- ---
-
 3. This will give you the endpoint on which the Lambda is listening. For example:
 
  ```
@@ -188,6 +181,8 @@ However, if you wish to deploy the flow in AWS Lambda manually, you can follow t
  **Note:**
 
  The first attempt may fail due to a cold start and timeout (30 sec timeout on the API Gateway). A subsequent retry after a minute should work and should return the resized image much faster.
+
+ The function will be open to the internet. Make sure to secure it if you want to keep it running (this is done when creating the API Gateway trigger) or delete everything once you are done.
 
  ---
 
