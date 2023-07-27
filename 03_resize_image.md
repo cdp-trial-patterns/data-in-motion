@@ -175,7 +175,7 @@ However, if you wish to deploy the flow in AWS Lambda manually, you can follow t
  --data-binary "@/Users/alim/Desktop/test.png" \
  --output /tmp/my_resized_image.png
  ```
- A resized image based on your parameters should be created in your output directory.
+ A resized image based on your parameters is created in your output directory.
 
  ---
  **Note:**
