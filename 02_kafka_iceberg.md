@@ -32,15 +32,15 @@ The flow consists of three processors and looks very promising for our use case.
 | Name                       | Description                                    | Value                                                                                |
 | -------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------ |
 | CDP Workload User          | CDP Workload User                              | srv_nifi-kafka-ingest                                                                |
-| CDP Workload User Password |                                                | \<Copy from Trial Manager homepage\>                                                 |
+| CDP Workload User Password |                                                | \<Copy the value for 'nifi-kafka-ingest-password' from Trial Manager homepage>                                                 |
 | Data Input Format          |                                                | JSON                                                                                 |
 | Hive Catalog Namespace     |                                                | syslog                                                                               |
 | Iceberg Table Name         |                                                | syslog_critical_archive                                                              |
-| Kafka Broker Endpoint      | Comma-separated list of Kafka Broker addresses | \<Comma-separated list of Kafka Broker addresses. Copy from Trial Manager homepage\> |
+| Kafka Broker Endpoint      | Comma-separated list of Kafka Broker addresses | \<Comma-separated list of Kafka Broker addresses. Copy the value for 'kafka_broker' from Trial Manager homepage\> |
 | Kafka Consumer Group ID    |                                                | cdf                                                                                  |
 | Kafka Source Topic         |                                                | syslog_critical                                                                      |
 | Schema Name                |                                                | syslog                                                                               |
-| Schema Registry Hostname   |                                                | \<Hostname of Schema Registry service. Copy from Trial Manager homepage\>            |
+| Schema Registry Hostname   |                                                | \<Hostname of Schema Registry service. Copy the value for 'schema_registry_host_name' from Trial Manager homepage\>            |
 
 - c. Click _Apply Changes_ to save the parameter values
 
