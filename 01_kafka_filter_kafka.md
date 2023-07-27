@@ -293,7 +293,7 @@ Add the following KPI
 
 #### 3. Click on the _Critical Syslogs - Prod_ deployment. The side panel opens and shows more detail about the deployment. On the _KPIs_ tab it will show information about the KPIs that you created when deploying the flow.
 
-### Using the two KPIs _Bytes Received_ and _Data Out_ we can observe that our flow is filtering out data as expected since it reads more than it sends out.
+#### Using the two KPIs _Bytes Received_ and _Data Out_ we can observe that our flow is filtering out data as expected since it reads more than it sends out.
 
  ![kpi-metrics.png](images/kpi-metrics.png)
 
@@ -329,7 +329,7 @@ Add the following KPI
 
  ![nifi-kafka.png](images/nifi-kafka.png)
 
-#### 5. Go back to the Deployment Manager expand the Actions menu and click on _Change NiFi Runtime Version”_
+#### 5. Go back to the Deployment Manager expand the Actions menu and click on _Change NiFi Runtime Version_
 
 ![change-nifi-version.png](images/change-nifi-version.png)
 
@@ -341,6 +341,6 @@ Add the following KPI
 
 ![update-nifi-version.png](images/update-nifi-version.png)
 
-### Congratulations, you have completed this use case! While the NiFi version of your deployment is being upgraded, feel free to proceed to the next use case!
+### **Congratulations**, you have completed the first use case! While the NiFi version of your deployment is being upgraded, feel free to proceed to the [next use case](02_kafka_iceberg.md)!
 
 ![deployment-upraded.png](images/deployment-upraded.png)
