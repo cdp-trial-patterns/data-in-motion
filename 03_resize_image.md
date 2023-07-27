@@ -118,11 +118,11 @@ This use case focuses on Functions in AWS. For information on running DataFlow F
 
  Make sure to give it a name that is unique (you can prefix it with your name):
 
- ![publish-a-flow-resize.png](images/publish-a-flow-resize.png)
+ ![publish-a-flow-resize2.png](images/publish-a-flow-resize2.png)
 
  Once the flow is published, make sure to copy the CRN of the published version (it will end by /v.1):
 
- ![flow-crn.png](images/flow-crn.png)
+ ![flow-crn2.png](images/flow-crn2.png)
 
 
 
