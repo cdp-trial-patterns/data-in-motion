@@ -8,11 +8,21 @@ DataFlow Functions is perfect for use cases such as:
 - Processing files as soon as they land into the cloud provider object store
 - Creating microservices over HTTPS
 - CRON driven use cases
-- etc
 
 In this use case, we will be deploying a NiFi flow that will be triggered by HTTPS requests to resize images. Once deployed, the cloud provider will provide an HTTPS endpoint that you’ll be able to call to send an image, it will trigger the NiFi flow that will return a resized image based on your parameters.
 
 The deployment of the flow as a function will have to be done within your cloud provider. Consequently this use case assumes that you have the permissions to deploy AWS Lambda / Azure Functions or Google Cloud Functions instances on your own cloud account.
+
+---
+**Note:**
+
+This use case focuses on Functions in AWS. For information on running DataFlow Functions on Azure or GCP, follow these instructions:
+
+[Functions in Azure](https://docs.cloudera.com/dataflow/cloud/azure-functions/topics/cdf-create-azure-function-app.html)
+
+[Functions in Google Cloud](https://docs.cloudera.com/dataflow/cloud/google-cloud-functions/topics/cdf-create-google-cloud-function.html)
+
+---
 
 ## 3.1 Designing the flow
 
@@ -73,7 +83,7 @@ The deployment of the flow as a function will have to be done within your cloud 
 
 17. Drag and drop a _Base64EncodeContent_ processor onto the canvas and name it _EncodeContent_. To send back the resized image to the user, AWS Lambda expects us to send back a specific JSON payload with the Base 64 encoding of the image.
 
-18. Connect the _ResizeImage processor_ to the _EncodeContent_ processor and select the _success_ relationship for the connection.
+18. Connect the _ResizeImage_ processor to the _EncodeContent_ processor and select the _success_ relationship for the connection.
 
 19. Drag and drop a _ReplaceText_ processor. We use it to extract the Base 64 representation of the resized image and add it in the expected JSON payload. Add the below JSON in “Replacement Value” .
 
@@ -130,12 +140,12 @@ This should download a binary with a name similar to:
 naaf-aws-lambda-1.0.0.2.3.9.0-24-bin.zip
 ```
 
-Once you have the binary, make sure, you also have:
+Once you have the binary, make sure you also have:
 - The CRN of the flow you published in the DataFlow Catalog
-- The Access Key that has been provided in the Trial Manager homepage
-- The Private Key that has been provided in the Trial Manager homepage
+- The Access Key. Copy the value for 'dff_service_account_cdp_access_key' from Trial Manager homepage.
+- The Private Key. Copy the value for 'dff_service_account_cdp_private_key' from Trial Manager homepage.
 
-In order to speed up the deployment, we’re going to leverage some scripts to automate the deployments. It assumes that your AWS CLI is properly configured locally on your laptop and you can use the jq command for reading JSON payloads. You can now follow the instructions from this page [here](https://docs.cloudera.com/dataflow/cloud/quickstart-functions/topics/cdf-functions-qs-aws-lambda.html).
+In order to speed up the deployment, we’re going to leverage some scripts to automate the deployment. It assumes that your AWS CLI is properly configured locally on your laptop and you can use the jq command for reading JSON payloads. You can follow the script instructions [here](https://docs.cloudera.com/dataflow/cloud/quickstart-functions/topics/cdf-functions-qs-aws-lambda.html).
 
 However, if you wish to deploy the flow in AWS Lambda manually, you can follow the steps described [here](https://docs.cloudera.com/dataflow/cloud/aws-lambda-functions/topics/cdf-create-aws-lambda-function.html).
 
@@ -148,6 +158,13 @@ However, if you wish to deploy the flow in AWS Lambda manually, you can follow t
  ![cdf-lambda-add-trigger.png](images/cdf-lambda-add-trigger.png)
 
  Click _Add_.
+
+ ---
+ **Note:**
+
+ The function will be open to the internet. Make sure to secure it if you want to keep it running (this is done when creating the API Gateway trigger) or delete everything once you are done.
+
+ ---
 
 3. This will give you the endpoint on which the Lambda is listening. For example:
 
@@ -165,12 +182,13 @@ However, if you wish to deploy the flow in AWS Lambda manually, you can follow t
  --data-binary "@/Users/alim/Desktop/test.png" \
  --output /tmp/my_resized_image.png
  ```
+ A resized image based on your parameters should be created in your output directory.
 
----
-**Notes:**
+ ---
+ **Note:**
 
-The first attempt may fail due to a cold start and timeout (30 sec timeout on the API Gateway). A subsequent retry after a minute should work and should return the resized image much faster.
+ The first attempt may fail due to a cold start and timeout (30 sec timeout on the API Gateway). A subsequent retry after a minute should work and should return the resized image much faster.
 
-The function will be open to the internet. Make sure to secure it if you want to keep it running (this is done when creating the API Gateway trigger) or delete everything once you are done.
+ ---
 
----
+Congratulations! With this you have completed the third use case.
