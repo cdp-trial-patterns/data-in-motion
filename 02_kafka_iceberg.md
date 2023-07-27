@@ -15,7 +15,7 @@ A few weeks have passed since you built your data flow with DataFlow Designer to
 
 5. Click on “Create New Draft” to open the ReadyFlow in the Designer
 6. Select the only available workspace and give your draft a name
-7. Click Create. You will be forwarded to the Designer
+7. Click "Create". You will be forwarded to the Designer
 8. Start a Test Session by either clicking on the _start a test session_ link in the banner or going to _Flow Options_ and selecting _Start_ in the Test Session section.
 9. In the Test Session creation wizard, select the latest NiFi version and click _Start Test Session_. Notice how the status at the top now says “Initializing Test Session”.
 
@@ -102,7 +102,7 @@ Our data warehouse team has created an Iceberg table that they want us to ingest
 
  ![add_service.png](images/add_service.png)
 
-### 7. Select _AvroRecordSetWriter_, name it _TransformedSchemaWrite_r and click _Add_.
+### 7. Select _AvroRecordSetWriter_, name it _TransformedSchemaWriter_ and click _Add_.
 
   ![avro-record-set-writer.png](images/avro-record-set-writer.png)
 
