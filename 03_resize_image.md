@@ -128,7 +128,7 @@ This use case focuses on Functions in AWS. For information on running DataFlow F
 
 ## 3.2 Deploying the flow as a function
 
-### 3.2.1 Deploying the flow in AWS Lambda
+### 3.2.1 Gather prerequisites
 
 First things first, go into DataFlow Functions and download the binary for running DataFlow Functions in AWS Lambda:
 
@@ -145,11 +145,18 @@ Once you have the binary, make sure you also have:
 - The Access Key. Copy the value for 'dff_service_account_cdp_access_key' from Trial Manager homepage.
 - The Private Key. Copy the value for 'dff_service_account_cdp_private_key' from Trial Manager homepage.
 
-In order to speed up the deployment, we’re going to leverage some scripts to automate the deployment. It assumes that your AWS CLI is properly configured locally on your laptop and you can use the jq command for reading JSON payloads. You can follow the script instructions [here](https://docs.cloudera.com/dataflow/cloud/quickstart-functions/topics/cdf-functions-qs-aws-lambda.html).
+### 3.2.2 Creating the AWS Lambda function
 
-However, if you wish to deploy the flow in AWS Lambda manually, you can follow the steps described [here](https://docs.cloudera.com/dataflow/cloud/aws-lambda-functions/topics/cdf-create-aws-lambda-function.html).
 
-### 3.2.2 Invoke the AWS Lambda function
+In order to speed up the deployment, we’re going to leverage some scripts to automate the deployment. It assumes that your AWS CLI is properly configured locally on your laptop and you can use the jq command for reading JSON payloads. 
+
+1. Create the Lambda function using the AWS CLI.   
+Follow the script instructions [here](https://docs.cloudera.com/dataflow/cloud/quickstart-functions/topics/cdf-functions-qs-aws-lambda.html).
+
+1. Create the Lambda function using the AWS Console.  
+If you wish to deploy the flow in AWS Lambda manually, you can follow the steps described [here](https://docs.cloudera.com/dataflow/cloud/aws-lambda-functions/topics/cdf-create-aws-lambda-function.html).
+
+### 3.2.3 Invoke the AWS Lambda function
 
 1. Open the AWS Console UI and go to your Lambda.
 
