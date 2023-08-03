@@ -1,6 +1,6 @@
 # Use Case 3 - Resize image flow deployed as server-less function
 
-DataFlow Functions provides a new, efficient way to run your event-driven Apache NiFi data flows. You can have your flow executed within AWS Lambda, Azure Functions or Google Cloud Functions and define the trigger that should start its execution.
+DataFlow Functions provides a new, efficient way to run your event-driven Apache NiFi data flows. You can have your flow executed within AWS Lambda, Azure Functions or Google Cloud Functions and define the trigger that should start its execution. isit the [Cloudera YouTube channel](https://youtu.be/oqaT7FDd0Fc?t=2579) for a video walkthrough of this use case.
 
 ![use-case-3_overview.png](images/use-case-3_overview.png)
 
