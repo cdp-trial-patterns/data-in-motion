@@ -12,4 +12,4 @@ Throughout this trial you will be using the ReadyFlow Gallery to look for templa
 
 Let’s get started with [Use Case 1: Filtering and processing streaming data](01_kafka_filter_kafka.md).
 
-If you prefer following a video, you’ll find a narrated walkthrough of all three trial use cases on the [Cloudera YouTube channel](https://www.youtube.com/channel/UCXY5wm6HlBL_Y_8SDxJNR0g).
+If you prefer following a video, you’ll find a narrated walkthrough of all three trial use cases on the [Cloudera YouTube channel](https://www.youtube.com/watch?v=oqaT7FDd0Fc).
