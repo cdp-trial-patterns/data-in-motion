@@ -1,6 +1,6 @@
 # Use Case 2 - Writing critical syslog events to Apache Iceberg for analysis
 
-A few weeks have passed since you built your data flow with DataFlow Designer to filter out critical syslog events to a dedicated Kafka topic. Now that everyone has better visibility into real-time health, management wants to do historical analysis on the data. Your company is evaluating Apache Iceberg to build an open data lakehouse and you are tasked with building a flow that ingests the most critical syslog events into an Iceberg table.
+A few weeks have passed since you built your data flow with DataFlow Designer to filter out critical syslog events to a dedicated Kafka topic. Now that everyone has better visibility into real-time health, management wants to do historical analysis on the data. Your company is evaluating Apache Iceberg to build an open data lakehouse and you are tasked with building a flow that ingests the most critical syslog events into an Iceberg table. Visit the [Cloudera YouTube channel](https://youtu.be/oqaT7FDd0Fc?t=1590) for a video walkthrough of this use case.
 
 ![use-case-2_overview.png](images/use-case-2_overview.png)
 
