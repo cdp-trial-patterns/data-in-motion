@@ -1,6 +1,7 @@
 # Use Case 1 - Reading and filtering a stream of syslog data
 
 You have been tasked with filtering a noisy stream of syslog events which are available in a Kafka topic. The goal is to identify critical events and write them to another Kafka topic.
+Visit the [Cloudera YouTube channel](https://www.youtube.com/watch?v=oqaT7FDd0Fc) for a video walkthrough of this use case.
 
 ![use-case-1_overview.png](images/use-case-1_overview.png)
 
