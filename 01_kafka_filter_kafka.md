@@ -294,9 +294,9 @@ The Deployment Wizard guides you through a six step process to create a flow dep
 
 3. Click on the _Critical Syslogs - Prod_ deployment. The side panel opens and shows more detail about the deployment. On the _KPIs_ tab it will show information about the KPIs that you created when deploying the flow.
 
- Using the two KPIs _Bytes Received_ and _Data Out_ we can observe that our flow is filtering out data as expected since it reads more than it sends out.
+   Using the two KPIs _Bytes Received_ and _Data Out_ we can observe that our flow is filtering out data as expected since it reads more than it sends out.
 
- ![kpi-metrics.png](images/kpi-metrics.png)
+   ![kpi-metrics.png](images/kpi-metrics.png)
 
 4. Switch to the _System Metrics_ tab where you can observe the current CPU utilization rate for the deployment. Our flow is not doing a lot of heavy transformation, so CPU utilization shouldn’t be too high.
 
@@ -304,35 +304,35 @@ The Deployment Wizard guides you through a six step process to create a flow dep
 
 6. Notice how your _Critical Syslogs - Prod_ deployment shows _Concerning Health_ status. Hover over the warning icon and click _View Details_.
 
- ![concerning-health.png](images/concerning-health.png)
+   ![concerning-health.png](images/concerning-health.png)
 
 7. You will be redirected to the _Alerts_ tab of the deployment. Here you get an overview of active and past alerts and events. Expand the Active Alert to learn more about its cause.
 
- ![active-alert.png](images/active-alert.png)
+   ![active-alert.png](images/active-alert.png)
 
- After expanding the alert, it is clear that it is caused by a KPI threshold breach for sending less than 1MB/s to external systems as defined earlier when you created the deployment.
+   After expanding the alert, it is clear that it is caused by a KPI threshold breach for sending less than 1MB/s to external systems as defined earlier when you created the deployment.
 
 ## 1.6 Managing your flow deployment
 
 1. Click on the _Critical Syslogs - Prod_ deployment in the Dashboard. In the side panel, click _Manage Deployment_ at the top right.
 
- ![manage-deployment.png](images/manage-deployment.png)
+   ![manage-deployment.png](images/manage-deployment.png)
 
 2. You are now being redirected to the _Deployment Manager_. The Deployment Manager allows you to reconfigure the deployment and modify KPIs, modify the number of NiFi nodes or turn auto-scaling on/off or update parameter values.
 
- ![deployment-manager.png](images/deployment-manager.png)
+   ![deployment-manager.png](images/deployment-manager.png)
 
 3. Explore NiFi UI for deployment. Click the _Actions_ menu and click on _View in NiFi_.
 
- ![view-in-nifi.png](images/view-in-nifi.png)
+   ![view-in-nifi.png](images/view-in-nifi.png)
 
 4. You are being redirected to the NiFi cluster running the flow deployment. You can use this view for in-depth troubleshooting. Users can have read-only or read/write permissions to the flow deployment. Double click on the NiFi process group to see the deployment flow.
 
- ![nifi-kafka.png](images/nifi-kafka.png)
+   ![nifi-kafka.png](images/nifi-kafka.png)
 
 5. Go back to the Deployment Manager expand the Actions menu and click on _Change NiFi Runtime Version_
 
- ![change-nifi-version.png](images/change-nifi-version.png)
+   ![change-nifi-version.png](images/change-nifi-version.png)
 
 6. Looks like we’re running an older version of NiFi. Let’s upgrade to the latest! Select the latest version from the dropdown and click “Update” (if you chose the latest NiFi version when creating the deployment, you can use the _Update_ action to downgrade to the previous NiFi version too).
 
