@@ -343,3 +343,10 @@ The Deployment Wizard guides you through a six step process to create a flow dep
    Note: The NiFi version update may take up to 5-10 minutes.
 
 ### Congratulations, you have completed the first use case! While the NiFi version of your deployment is being upgraded, feel free to proceed to the [next use case](02_kafka_iceberg.md)!
+
+---
+**Info:**
+
+The completed flow definition for this use case can be found in the Catalog under the name "Use Case 1 - Cloudera - Filter critical syslog events".  If you run into issues during your flow development, it may be helpful to select this flow in the Catalog and select "Create New Draft" to open it in the Flow Designer to compare to your own.
+
+---
