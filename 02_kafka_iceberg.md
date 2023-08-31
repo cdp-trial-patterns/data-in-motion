@@ -6,7 +6,7 @@ A few weeks have passed since you built your data flow with DataFlow Designer to
 
 ## 2.1 Open ReadyFlow & start Test Session
 
-1. Navigate to **DataFlow**
+1. On the CDP Public Cloud Home Page, navigate to **DataFlow**
 2. Navigate to the **ReadyFlow Gallery**
 3. Explore the ReadyFlow Gallery
 4. Search for the “Kafka to Iceberg” ReadyFlow.
@@ -17,8 +17,9 @@ A few weeks have passed since you built your data flow with DataFlow Designer to
 6. Select the only available workspace and give your draft a name
 7. Click "Create". You will be forwarded to the Designer
 8. Start a Test Session by either clicking on the _start a test session_ link in the banner or going to _Flow Options_ and selecting _Start_ in the Test Session section.
-9. In the Test Session creation wizard, select the latest NiFi version and click _Start Test Session_. Notice how the status at the top now says “Initializing Test Session”.
+9. In the Test Session creation wizard, confirm the latest NiFi version is selected and click _Start Test Session_. Notice how the status at the top now says “Initializing Test Session”.
 
+   Note: Test Session initialization should take about 5-10 minutes.
 
 ## 2.2 Modifying the flow to read syslog data
 
@@ -34,13 +35,19 @@ The flow consists of three processors and looks very promising for our use case.
 | CDP Workload User          | srv_nifi-kafka-ingest                                                                                               |
 | CDP Workload User Password | \<Copy the value for 'nifi-kafka-ingest-password' from Trial Manager homepage>                                      |
 | Data Input Format          | JSON                                                                                                                |
-| Hive Catalog Namespace     | syslog                                                                                                              |
+| Hive Catalog Namespace     | \<There is a value set. Change from 'default' to 'syslog'\>                                                             |
 | Iceberg Table Name         | syslog_critical_archive                                                                                             |
 | Kafka Broker Endpoint      | \<Comma-separated list of Kafka Broker addresses. Copy the value for 'kafka_broker' from Trial Manager homepage\>   |
 | Kafka Consumer Group ID    | cdf                                                                                                                 |
 | Kafka Source Topic         | syslog_critical                                                                                                     |
 | Schema Name                | syslog                                                                                                              |
 | Schema Registry Hostname   | \<Hostname of Schema Registry service. Copy the value for 'schema_registry_host_name' from Trial Manager homepage\> |
+
+Note: The parameter values that need to be copied from the Trial Manager homepage are found by selecting _Manage Trial_ in the upper right corner and then selecting _Configurations_.
+
+![manage-trial.png](images/manage-trial.png)
+
+![trial-configurations.png](images/trial-configurations.png)
 
 - c. Click _Apply Changes_ to save the parameter values
 
@@ -66,53 +73,53 @@ The flow consists of three processors and looks very promising for our use case.
 
 Our data warehouse team has created an Iceberg table that they want us to ingest the critical syslog data in. A challenge we are facing is that not all column names in the Iceberg table match our syslog record schema. So we have to add functionality to our flow that allows us to change the schema of our syslog records. To do this, we will be using the _JoltTransformRecord_ processor.
 
-### 1. Add a new _JoltTransformRecord_ to the canvas by dragging the processor icon to the canvas.
+1. Add a new _JoltTransformRecord_ to the canvas by dragging the processor icon to the canvas.
 
- ![drag-processor.png](images/drag-processor.png)
+   ![drag-processor.png](images/drag-processor.png)
 
-### 2. In the _Add Processor_ window, select the _JoltTransformRecord_ type and name the processor _TransformSchema_.
+2. In the _Add Processor_ window, select the _JoltTransformRecord_ type and name the processor _TransformSchema_.
 
- ![transform-schema.png](images/transform-schema.png)
+   ![transform-schema.png](images/transform-schema.png)
 
-### 3. Validate that your new processor now appears on the canvas.
+3. Validate that your new processor now appears on the canvas.
 
- ![transform-schema-added.png](images/transform-schema-added.png)
+   ![transform-schema-added.png](images/transform-schema-added.png)
 
-### 4. Create connections from _ConsumeFromKafka_ to _TransformSchema_ by hovering over the _ConsumeFromKafka_ processor and dragging the arrow that appears to _TransformSchema_. Pick the _success_ relationship to connect.
+4. Create connections from _ConsumeFromKafka_ to _TransformSchema_ by hovering over the _ConsumeFromKafka_ processor and dragging the arrow that appears to _TransformSchema_. Pick the _success_ relationship to connect.
 
- ![create-connection.png](images/create-connection.png)
+   ![create-connection.png](images/create-connection.png)
 
-### Now connect the success relationship of TransformSchema to the MergeRecords processor.
+   Now connect the _success_ relationship of TransformSchema to the MergeRecords processor.
 
- ![transform-schema-connect.png](images/transform-schema-connect.png)
+   ![transform-schema-connect.png](images/transform-schema-connect.png)
 
-### 5. Now that we have connected our new _TransformSchema_ processor, we can delete the original connection between _ConsumeFromKafka_ and _MergeRecords_.
+5. Now that we have connected our new _TransformSchema_ processor, we can delete the original connection between _ConsumeFromKafka_ and _MergeRecords_.
 
-### Make sure that the _ConsumeFromKafka_ processor is stopped. Then select the connection and delete it.
+   Make sure that the _ConsumeFromKafka_ processor is stopped. Right click on the _success_ConsumeFromKafka-MergeContent_ connection and select _Empty Queue_. Then right-click select _Delete_.
 
-### If the connection contains queued data, you have to empty it first by right clicking and selecting _Empty Queue_.
+   If the connection contains queued data, you have to empty it first by right clicking and selecting _Empty Queue_.
 
-### Now all syslog events that we receive, will go through the _TransformSchema_ processor.
+   Now all syslog events that we receive, will go through the _TransformSchema_ processor.
 
- ![connection_delete.png](images/connection_delete.png)
+  ![connection_delete.png](images/connection_delete.png)
 
-### 6. To make sure that our schema transformation works, we have to create a new _Record Writer Service_ and use it as the Record Writer for the _TransformSchema_ processor.
+6. To make sure that our schema transformation works, we have to create a new _Record Writer Service_ and use it as the Record Writer for the _TransformSchema_ processor.
 
-### Select the _TransformSchema_ processor and open the configuration panel. Scroll to the _Properties_ section, click the three dot menu in the _Record Writer_ row and select _Add Service_ to create a new Record Writer.
+   Select the _TransformSchema_ processor and open the configuration panel. Scroll to the _Properties_ section, click the three dot menu in the _Record Writer_ row and select _Add Service_ to create a new Record Writer.
 
- ![add_service.png](images/add_service.png)
+   ![add_service.png](images/add_service.png)
 
-### 7. Select _AvroRecordSetWriter_, name it _TransformedSchemaWriter_ and click _Add_.
+7. Select _AvroRecordSetWriter_, name it _TransformedSchemaWriter_ and click _Add_.
 
-  ![avro-record-set-writer.png](images/avro-record-set-writer.png)
+   ![avro-record-set-writer.png](images/avro-record-set-writer.png)
 
-### Click _Apply_ in the configuration panel to save your changes.
+   Click _Apply_ in the configuration panel to save your changes.
 
-### 8. Now click the three dot menu again and select _Go To Service_ to configure our new Avro Record Writer.
+8. Now click the three dot menu again and select _Go To Service_ to configure our new Avro Record Writer.
 
-  ![go-to-service.png](images/go-to-service.png)
+   ![go-to-service.png](images/go-to-service.png)
 
-### 9. To configure our new Avro Record Writer, provide the following values:
+9. To configure our new Avro Record Writer, provide the following values:
 
 | Name                   | Description                                             | Value                          |
 | -----------------------| ------------------------------------------------------- | ------------------------------ |
@@ -123,23 +130,23 @@ Our data warehouse team has created an Iceberg table that they want us to ingest
 
   ![transform-schema-writer-settings.png](images/transform-schema-writer-settings.png)
 
-### 10. Convert the value that you provided for _Schema Name_ into a parameter. Click on the three dot menu in the _Schema Name_ row and select _Convert To Parameter_.
+10. Convert the value that you provided for _Schema Name_ into a parameter. Click on the three dot menu in the _Schema Name_ row and select _Convert To Parameter_.
 
-  ![convert-to-parameter.png](images/convert-to-parameter.png)  
+    ![convert-to-parameter.png](images/convert-to-parameter.png)  
 
-### 11. Give the parameter the name _Schema Name Transformed_ and click “Add”. You have now created a new parameter from a value that can be used in more places in your data flow.
+11. Give the parameter the name _Schema Name Transformed_ and click “Add”. You have now created a new parameter from a value that can be used in more places in your data flow.
 
-  ![schema-name-transformed.png](images/schema-name-transformed.png)
+   ![schema-name-transformed.png](images/schema-name-transformed.png)
 
-### 12. Apply your configuration changes and _Enable_ the Service by clicking the power icon. Now you have configured our new Schema Writer and we can return back to the Flow Designer canvas.
+12. Apply your configuration changes and _Enable_ the Service by clicking the power icon. Now you have configured our new Schema Writer and we can return back to the Flow Designer canvas.
 
-  ![transform-schema-writer-enable.png](images/transform-schema-writer-enable.png)  
+    ![transform-schema-writer-enable.png](images/transform-schema-writer-enable.png)  
 
-### 13. In the configuration drawer, scroll down to the _Referencing Components_ section and click on _TransformSchema_ to get back to the canvas.
+13. In the configuration drawer, scroll down to the _Referencing Components_ section and click on _TransformSchema_ to get back to the canvas.
 
-  ![referencing-components.png](images/referencing-components.png)
+    ![referencing-components.png](images/referencing-components.png)
 
-### 14. In the properties section, provide the following values:
+14. In the properties section, provide the following values:
 
 | Name                   | Description                                                                                                                                                                | Value                       |
 | -----------------------| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
@@ -169,40 +176,40 @@ Our data warehouse team has created an Iceberg table that they want us to ingest
 ]
 ```
 
-### 15. Scroll to _Relationships_ and select _Terminate_ for the failure, original relationships and click _Apply_.
+15. Scroll to _Relationships_ and select _Terminate_ for the failure, original relationships and click _Apply_.
 
-![relationships.png](images/relationships.png)
+    ![relationships.png](images/relationships.png)
 
-### 16. Start your _TransformSchema_ and _ConsumeFromKafka_ processors and validate that the transformed data matches our Iceberg table schema.
+16. Start your _ConsumeFromKafka_ and _TransformSchema_ processors.
 
-### 17. Once events are queuing up in the connection between _TransformSchema_ and _MergeRecord_, right click the connection and select _List Queue_.
+17. Validate that the transformed data matches our Iceberg table schema. Once events are queuing up in the connection between _TransformSchema_ and _MergeRecord_, right click the connection and select _List Queue_.
 
-![list-queue-kafka-to-iceberg.png](images/list-queue-kafka-to-iceberg.png)
+    ![list-queue-kafka-to-iceberg.png](images/list-queue-kafka-to-iceberg.png)
 
-### 18. Select any of the queued files and select the book icon to open it in the Data Viewer
+18. Select any of the queued files and select the book icon to open it in the Data Viewer
 
-![data-viewer-transform-schema.png](images/data-viewer-transform-schema.png)
+    ![data-viewer-transform-schema.png](images/data-viewer-transform-schema.png)
 
-### 19. Notice how all field names have been transformed to lower case and how the _timestamp_ field has been renamed to _event_timestamp_.
+19. Notice how all field names have been transformed to lower case and how the _timestamp_ field has been renamed to _event_timestamp_.
 
 ![event-timestamp.png](images/event-timestamp.png)
 
 ## 2.4 Merging records and start writing to Iceberg
 
-### Now that we have verified that our schema is being transformed as needed, it’s time to start the remaining processors and write our events into the Iceberg table. The _MergeRecords_ processor is configured to batch events up to increase efficiency when writing to Iceberg. The final processor, _WriteToIceberg_ takes our Avro records and writes them into a Parquet formatted table.
+Now that we have verified that our schema is being transformed as needed, it’s time to start the remaining processors and write our events into the Iceberg table. The _MergeRecords_ processor is configured to batch events up to increase efficiency when writing to Iceberg. The final processor, _WriteToIceberg_ takes our Avro records and writes them into a Parquet formatted table.
 
-### 1. Select the _MergeRecords_ processor and explore its configuration. It is configured to batch events up for at least 5 minutes or until the queued up events have reached _Maximum Bin Size_ of 1GB.
+1. Select the _MergeRecords_ processor and explore its configuration. It is configured to batch events up for at least 5 minutes or until the queued up events have reached _Maximum Bin Size_ of 1GB.
 
-![merge-records-properties.png](images/merge-records-properties.png)
+   ![merge-records-properties.png](images/merge-records-properties.png)
 
-### 2. Start the _MergeRecords_ processor and verify that it batches up events and writes them out after 5 minutes. Tip: You can change the _Max Bin Age_ configuration to something like “30 sec” to speed up processing.
+2. Start the _MergeRecords_ processor and verify that it batches up events and writes them out after 5 minutes. Tip: You can change the _Max Bin Age_ configuration to something like “30 sec” to speed up processing.
 
-### 3. Select the _WriteToIceberg_ processor and explore its configuration. Notice how it relies on several parameters to establish a connection to the right database and table.
+3. Select the _WriteToIceberg_ processor and explore its configuration. Notice how it relies on several parameters to establish a connection to the right database and table.
 
-![write-to-iceberg-properties.png](images/write-to-iceberg-properties.png)
+   ![write-to-iceberg-properties.png](images/write-to-iceberg-properties.png)
 
-### 4. Start the _WriteToIceberg_ processor and verify that it writes records successfully to Iceberg. If the metrics on the processor increase and you don’t see any warnings or events being written to the _failure_WriteToIceberg_ connection, your writes are successful!
+4. Start the _WriteToIceberg_ processor and verify that it writes records successfully to Iceberg. If the metrics on the processor increase and you don’t see any warnings or events being written to the _failure_WriteToIceberg_ connection, your writes are successful!
 
-![write-to-iceberg-processor.png](images/write-to-iceberg-processor.png)
+   ![write-to-iceberg-processor.png](images/write-to-iceberg-processor.png)
 
 ### Congratulations! With this you have completed the second use case. Feel free to publish your flow to the catalog and create a deployment.
