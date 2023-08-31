@@ -136,7 +136,7 @@ Our data warehouse team has created an Iceberg table that they want us to ingest
 
 11. Give the parameter the name _Schema Name Transformed_ and click “Add”. You have now created a new parameter from a value that can be used in more places in your data flow.
 
-   ![schema-name-transformed.png](images/schema-name-transformed.png)
+    ![schema-name-transformed.png](images/schema-name-transformed.png)
 
 12. Apply your configuration changes and _Enable_ the Service by clicking the power icon. Now you have configured our new Schema Writer and we can return back to the Flow Designer canvas.
 
@@ -184,7 +184,7 @@ Our data warehouse team has created an Iceberg table that they want us to ingest
 
 17. Validate that the transformed data matches our Iceberg table schema. Once events are queuing up in the connection between _TransformSchema_ and _MergeRecord_, right click the connection and select _List Queue_.
 
-    ![list-queue-kafka-to-iceberg.png](images/list-queue-kafka-to-iceberg.png)
+    ![list-queue-kafka-to-iceberg.png](images/list-queue-kafka-to-iceberg.png)
 
 18. Select any of the queued files and select the book icon to open it in the Data Viewer
 
@@ -192,7 +192,7 @@ Our data warehouse team has created an Iceberg table that they want us to ingest
 
 19. Notice how all field names have been transformed to lower case and how the _timestamp_ field has been renamed to _event_timestamp_.
 
-![event-timestamp.png](images/event-timestamp.png)
+    ![event-timestamp.png](images/event-timestamp.png)
 
 ## 2.4 Merging records and start writing to Iceberg
 
