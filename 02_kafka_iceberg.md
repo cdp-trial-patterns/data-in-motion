@@ -213,3 +213,10 @@ Now that we have verified that our schema is being transformed as needed, it’s
    ![write-to-iceberg-processor.png](images/write-to-iceberg-processor.png)
 
 ### Congratulations! With this you have completed the second use case. Feel free to publish your flow to the catalog and create a deployment.
+
+---
+**Info:**
+
+The completed flow definition for this use case can be found in the Catalog under the name "Use Case 2 - Cloudera - Write critical syslog events to Iceberg".  If you run into issues during your flow development, it may be helpful to select this flow in the Catalog and select "Create New Draft" to open it in the Flow Designer to compare to your own.
+
+---
