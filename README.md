@@ -13,3 +13,5 @@ Throughout this trial you will be using the ReadyFlow Gallery to look for templa
 Let’s get started with [Use Case 1: Filtering and processing streaming data](01_kafka_filter_kafka.md).
 
 If you prefer following a video, you’ll find a narrated walkthrough of all three trial use cases on the [Cloudera YouTube channel](https://www.youtube.com/watch?v=oqaT7FDd0Fc).
+
+For general information on how to access and navigate CDP Public Cloud Trials go to (https://github.com/cdp-trial-patterns/trials).
