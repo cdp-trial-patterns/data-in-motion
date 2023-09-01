@@ -181,7 +181,7 @@ If you wish to deploy the flow in AWS Lambda manually, you can follow the steps 
  https://aa2q99qo3i.execute-api.eu-west-2.amazonaws.com/default/resizeimage
  ```
 
-4. Send a request to your function using curl:
+4. Send a request to your function using curl. For example:
 
  ```
  curl -X POST https://aa2q99qo3i.execute-api.eu-west-2.amazonaws.com/default/resizeimage \
@@ -191,7 +191,7 @@ If you wish to deploy the flow in AWS Lambda manually, you can follow the steps 
  --data-binary "@/Users/alim/Desktop/test.png" \
  --output /tmp/my_resized_image.png
  ```
- A resized image based on your parameters is created in your output directory.
+5. A resized image based on your parameters is created in your output directory.
 
  ![resize_success.png](images/resize_success.png)
 
