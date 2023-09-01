@@ -193,7 +193,7 @@ If you wish to deploy the flow in AWS Lambda manually, you can follow the steps 
  ```
 5. A resized image based on your parameters is created in your output directory.
 
- ![resize_success.png](images/resize_success.png)
+   ![resize_success.png](images/resize_success.png)
 
  ---
  **Note:**
