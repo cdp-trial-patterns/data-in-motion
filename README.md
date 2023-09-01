@@ -14,4 +14,4 @@ Let’s get started with [Use Case 1: Filtering and processing streaming data](0
 
 If you prefer following a video, you’ll find a narrated walkthrough of all three trial use cases on the [Cloudera YouTube channel](https://www.youtube.com/watch?v=oqaT7FDd0Fc).
 
-For general information on how to access and navigate CDP Public Cloud Trials go to (https://github.com/cdp-trial-patterns/trials).
+For general information on how to access and navigate CDP Public Cloud Trials go to https://github.com/cdp-trial-patterns/trials.
