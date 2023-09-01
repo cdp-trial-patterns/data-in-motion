@@ -26,6 +26,13 @@ This use case focuses on Functions in AWS. For information on running DataFlow F
 
 ## 3.1 Designing the flow
 
+---
+**Note:**
+
+As an alternative to building the flow from scratch, you can go to the Catalog and select the completed use case flow definition named "Use Case 3 - Cloudera - Resize image function". The CRN of this published flow definition can be used for the reference in Section 3.1.1 Step #25 below. If you do decide to build the flow from scratch and run into issues during development, you can select "Use Case 3 - Cloudera - Resize image function" and then select "Create New Draft" to open it in the Flow Designer in order to compare to your flow.
+
+---
+
 ### 3.1.1 Flow for AWS
 
 1. Go into Cloudera DataFlow / Flow Design and create a new draft and name it _functions_flow_.
@@ -112,17 +119,17 @@ This use case focuses on Functions in AWS. For information on running DataFlow F
 
  ![resize-image-flow.png](images/resize-image-flow.png)
 
- You can now publish the flow into the DataFlow Catalog in the Flow Options menu:
+25. You can now publish the flow into the DataFlow Catalog in the Flow Options menu:
 
- ![resize-image-publish.png](images/resize-image-publish.png)
+    ![resize-image-publish.png](images/resize-image-publish.png)
 
- Make sure to give it a name that is unique (you can prefix it with your name):
+    Make sure to give it a name that is unique (you can prefix it with your name):
 
- ![publish-a-flow-resize2.png](images/publish-a-flow-resize2.png)
+    ![publish-a-flow-resize2.png](images/publish-a-flow-resize2.png)
 
- Once the flow is published, make sure to copy the CRN of the published version (it will end by /v.1):
+    Once the flow is published, make sure to copy the CRN of the published version (it will end by /v.1):
 
- ![flow-crn2.png](images/flow-crn2.png)
+    ![flow-crn2.png](images/flow-crn2.png)
 
 
 
@@ -148,12 +155,14 @@ Once you have the binary, make sure you also have:
 ### 3.2.2 Creating the AWS Lambda function
 
 
-In order to speed up the deployment, we’re going to leverage some scripts to automate the deployment. It assumes that your AWS CLI is properly configured locally on your laptop and you can use the jq command for reading JSON payloads. 
+In order to speed up the deployment, we’re going to leverage some scripts to automate the deployment. It assumes that your AWS CLI is properly configured locally on your laptop and you can use the jq command for reading JSON payloads.
 
 1. Create the Lambda function using the AWS CLI.   
 Follow the script instructions [here](https://docs.cloudera.com/dataflow/cloud/quickstart-functions/topics/cdf-functions-qs-aws-lambda.html).
 
-1. Create the Lambda function using the AWS Console.  
+   Note: The [Cloudera YouTube channel video](https://youtu.be/oqaT7FDd0Fc?t=2579) for this use case demonstrates this method.
+
+2. Create the Lambda function using the AWS Console.  
 If you wish to deploy the flow in AWS Lambda manually, you can follow the steps described [here](https://docs.cloudera.com/dataflow/cloud/aws-lambda-functions/topics/cdf-create-aws-lambda-function.html).
 
 ### 3.2.3 Invoke the AWS Lambda function
@@ -183,6 +192,8 @@ If you wish to deploy the flow in AWS Lambda manually, you can follow the steps 
  --output /tmp/my_resized_image.png
  ```
  A resized image based on your parameters is created in your output directory.
+
+ ![resize_success.png](images/resize_success.png)
 
  ---
  **Note:**
