@@ -11,7 +11,7 @@ DataFlow Functions is perfect for use cases such as:
 
 In this use case, we will be deploying a NiFi flow that will be triggered by HTTPS requests to resize images. Once deployed, the cloud provider will provide an HTTPS endpoint that you’ll be able to call to send an image, it will trigger the NiFi flow that will return a resized image based on your parameters.
 
-The deployment of the flow as a function will have to be done within your cloud provider. Consequently this use case assumes that you have the permissions to deploy AWS Lambda / Azure Functions or Google Cloud Functions instances on your own cloud account.
+The deployment of the flow as a function will have to be done within your cloud provider. Consequently, this use case assumes that you have the permissions to deploy AWS Lambda / Azure Functions or Google Cloud Functions instances on your own cloud account.
 
 ---
 **Note:**
@@ -38,11 +38,11 @@ As an alternative to building the flow from scratch, you can go to the Catalog a
 1. Go into Cloudera DataFlow / Flow Design and create a new draft and name it _functions_flow_.
 2. Drag and drop an Input Port named **input** onto the canvas. When triggered, AWS Lambda is going to inject a FlowFile into that input port containing the information about the HTTPS call that has been made.
 
- Example of payload that will be injected by AWS Lambda as a FlowFile:
+   Example of payload that will be injected by AWS Lambda as a FlowFile:
 
- ![example-payload.png](images/example-payload.png)
+   ![example-payload.png](images/example-payload.png)
 
-3. Drag and drop an _EvaluateJsonPath_ processor. We’re going to use this to extract the HTTP headers that we want to keep in our flow. Add two properties configured as below. It’ll save as FlowFile’s attributes the HTTP headers (resize-height and resize-width) that we will be adding when making a call with our image to specify the dimensions of the resized image.
+3. Drag and drop an _EvaluateJsonPath_ processor onto the canvas. We’re going to use this to extract the HTTP headers that we want to keep in our flow. Add two properties configured as below. It’ll save as FlowFile’s attributes the HTTP headers (_resize-height_ and _resize-width_) that we will be adding when making a call with our image to specify the dimensions of the resized image.
 
  ```
 	resizeHeight => $.headers.resize-height
@@ -127,7 +127,7 @@ As an alternative to building the flow from scratch, you can go to the Catalog a
 
     ![publish-a-flow-resize2.png](images/publish-a-flow-resize2.png)
 
-    Once the flow is published, make sure to copy the CRN of the published version (it will end by /v.1):
+    Once the flow is published, make sure to copy the CRN of the published version (it will end with /v.1):
 
     ![flow-crn2.png](images/flow-crn2.png)
 
@@ -151,6 +151,12 @@ Once you have the binary, make sure you also have:
 - The CRN of the flow you published in the DataFlow Catalog
 - The Access Key. Copy the value for 'dff_service_account_cdp_access_key' from Trial Manager homepage.
 - The Private Key. Copy the value for 'dff_service_account_cdp_private_key' from Trial Manager homepage.
+
+Note: The parameter values that need to be copied from the Trial Manager homepage are found by selecting _Manage Trial_ in the upper right corner and then selecting _Configurations_.
+
+![manage-trial.png](images/manage-trial.png)
+
+![trial-configurations.png](images/trial-configurations.png)
 
 ### 3.2.2 Creating the AWS Lambda function
 
