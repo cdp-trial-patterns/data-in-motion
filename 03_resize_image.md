@@ -149,12 +149,12 @@ naaf-aws-lambda-1.0.0.2.3.9.0-24-bin.zip
 
 Once you have the binary, make sure you also have:
 - The CRN of the flow you published in the DataFlow Catalog
-- The Access Key. Copy the value for 'dff_service_account_cdp_access_key' from Trial Manager homepage.
-- The Private Key. Copy the value for 'dff_service_account_cdp_private_key' from Trial Manager homepage.
+- The Access Key. Copy the value for 'dff_service_account_cdp_access_key' from [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas).
+- The Private Key. Copy the value for 'dff_service_account_cdp_private_key' from [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas).
 
-Note: The parameter values that need to be copied from the Trial Manager homepage are found by selecting _Manage Trial_ in the upper right corner and then selecting _Configurations_.
+Note: The parameter values that need to be copied from the [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas) are found by selecting _Manage Trial_ in the upper right corner and then selecting _Configurations_.
 
-![manage-trial.png](images/manage-trial.png)
+![manage-trial.png](images/manage-trial2.png)
 
 ![trial-configurations.png](images/trial-configurations.png)
 
