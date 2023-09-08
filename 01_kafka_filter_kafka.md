@@ -23,7 +23,7 @@ The ReadyFlow Gallery is where you can find out-of-box templates for common data
 6. Select the only available workspace and give your draft a name
 7. Click Create. You will be forwarded to the Designer
 8. Start a Test Session by either clicking on the _start a test session_ link in the banner or going to _Flow Options_ and selecting _Start_ in the Test Session section.
-9. In the Test Session creation wizard, select the latest NiFi version and click _Start Test Session_. Notice how the status at the top now says “Initializing Test Session”.
+9. In the Test Session creation wizard, keep the defaults for NiFi Runtime Version (latest), Inbound Connections (unchecked) and Custom NAR Configuration (unchecked). Click _Start Test Session_. Notice how the status at the top now says “Initializing Test Session”.
 
  Note: Test Session initialization should take about 5-10 minutes.
 
@@ -46,20 +46,20 @@ The flow consists of three processors and looks very promising for our use case.
 | Name                       | Value                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | CDP Workload User          | srv_nifi-kafka-ingest                                                                                               |
-| CDP Workload User Password | \<Copy the value for 'nifi-kafka-ingest-password' from Trial Manager homepage\>                                     |
+| CDP Workload User Password | \<Copy the value for 'nifi-kafka-ingest-password' from [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas)\>                                     |
 | Data Input Format          | AVRO                                                                                                                |
 | Data Output Format         | JSON                                                                                                                |
-| Kafka Broker Endpoint      | \<Comma-separated list of Kafka Broker addresses. Copy the value for 'kafka_broker' from Trial Manager homepage\>   |
+| Kafka Broker Endpoint      | \<Comma-separated list of Kafka Broker addresses. Copy the value for 'kafka_broker' from [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas)\>   |
 | Kafka Consumer Group ID    | cdf                                                                                                                 |
 | Kafka Destination Topic    | syslog_critical                                                                                                     |
 | Kafka Producer ID          | cdf                                                                                                                 |
 | Kafka Source Topic         | syslog_avro                                                                                                         |
 | Schema Name                | syslog                                                                                                              |
-| Schema Registry Hostname   | \<Hostname of Schema Registry service. Copy the value for 'schema_registry_host_name' from Trial Manager homepage\> |
+| Schema Registry Hostname   | \<Hostname of Schema Registry service. Copy the value for 'schema_registry_host_name' from [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas)\> |
 
- Note: The parameter values that need to be copied from the Trial Manager homepage are found by selecting _Manage Trial_ in the upper right corner and then selecting _Configurations_.
+ Note: The parameter values that need to be copied from the [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas) are found by selecting _Manage Trial_ in the upper right corner and then selecting _Configurations_.
 
- ![manage-trial.png](images/manage-trial.png)
+ ![manage-trial.png](images/manage-trial2.png)
 
 ![trial-configurations.png](images/trial-configurations.png)
 
