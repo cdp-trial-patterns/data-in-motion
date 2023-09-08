@@ -233,7 +233,7 @@ The Deployment Wizard guides you through a six step process to create a flow dep
 
      You should now only see one parameter - the _CDP Workload User Password_ parameter which is sensitive. Sensitive parameter values are removed when you publish a flow to the catalog to make sure passwords don’t leak.
 
-     Provide the _CDP Workload User Password_ (the value for 'nifi-kafka-ingest password' from the Trial Manager homepage) and click _Next_ to continue.
+     Provide the _CDP Workload User Password_ (the value for 'nifi-kafka-ingest password' from the [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas)) and click _Next_ to continue.
 
      ![cdp-workload-user-password-value.png](images/cdp-workload-user-password-value.png)
 
