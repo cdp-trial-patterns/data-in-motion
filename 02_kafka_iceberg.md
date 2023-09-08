@@ -33,19 +33,19 @@ The flow consists of three processors and looks very promising for our use case.
 | Name                       | Value                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | CDP Workload User          | srv_nifi-kafka-ingest                                                                                               |
-| CDP Workload User Password | \<Copy the value for 'nifi-kafka-ingest-password' from Trial Manager homepage>                                      |
+| CDP Workload User Password | \<Copy the value for 'nifi-kafka-ingest-password' from [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas)>                                      |
 | Data Input Format          | JSON                                                                                                                |
 | Hive Catalog Namespace     | \<There is a value set. Change from 'default' to 'syslog'\>                                                             |
 | Iceberg Table Name         | syslog_critical_archive                                                                                             |
-| Kafka Broker Endpoint      | \<Comma-separated list of Kafka Broker addresses. Copy the value for 'kafka_broker' from Trial Manager homepage\>   |
+| Kafka Broker Endpoint      | \<Comma-separated list of Kafka Broker addresses. Copy the value for 'kafka_broker' from [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas)\>   |
 | Kafka Consumer Group ID    | cdf                                                                                                                 |
 | Kafka Source Topic         | syslog_critical                                                                                                     |
 | Schema Name                | syslog                                                                                                              |
-| Schema Registry Hostname   | \<Hostname of Schema Registry service. Copy the value for 'schema_registry_host_name' from Trial Manager homepage\> |
+| Schema Registry Hostname   | \<Hostname of Schema Registry service. Copy the value for 'schema_registry_host_name' from [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas)\> |
 
-Note: The parameter values that need to be copied from the Trial Manager homepage are found by selecting _Manage Trial_ in the upper right corner and then selecting _Configurations_.
+Note: The parameter values that need to be copied from the [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas) are found by selecting _Manage Trial_ in the upper right corner and then selecting _Configurations_.
 
-![manage-trial.png](images/manage-trial.png)
+![manage-trial.png](images/manage-trial2.png)
 
 ![trial-configurations.png](images/trial-configurations.png)
 
