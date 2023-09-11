@@ -72,6 +72,18 @@ The flow consists of three processors and looks very promising for our use case.
 
      ![service-and-referencing-components.png](images/service-and-referencing-components.png)
 
+     Note: If clicking _Enable Service and Referencing Components_ does not cause _CDP_Schema_Registry_ and other services to enable, perform the following steps:
+
+     1. Click _Enable_.
+
+        ![enable-service.png](images/enable-service.png)
+
+     2. The _CDP_Schema_Registry_ service should be enabled. Click _Disable_.
+
+        ![disable-service.png](images/disable-service.png)
+
+     3. Click _Enable Service and Referencing Components_.
+
 - c. Make sure all services have been enabled
 
      ![enable-services-kafka-filter-to-kafka.png](images/enable-services-kafka-filter-to-kafka.png)
