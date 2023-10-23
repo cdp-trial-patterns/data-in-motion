@@ -30,6 +30,8 @@ The flow consists of three processors and looks very promising for our use case.
 - a. Navigate to _Flow Options_ → _Parameters_
 - b. Select all parameters that show _No value set_ and provide the following values
 
+     Note: The parameter values that need to be copied from the [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas) are found by selecting _Manage Trial_ in the upper right corner and then selecting _Configurations_. See screenshots below.
+
 | Name                       | Value                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | CDP Workload User          | srv_nifi-kafka-ingest                                                                                               |
@@ -42,8 +44,6 @@ The flow consists of three processors and looks very promising for our use case.
 | Kafka Source Topic         | syslog_critical                                                                                                     |
 | Schema Name                | syslog                                                                                                              |
 | Schema Registry Hostname   | \<Hostname of Schema Registry service. Copy the value for 'schema_registry_host_name' from [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas)\> |
-
-Note: The parameter values that need to be copied from the [Trial Manager homepage](https://console.us-west-1.cdp.cloudera.com/trial/#/postRegister?pattern=CDP_DATA_DISTRIBUTION_AND_STREAM_ANALYTICS&trial=cdp_paas) are found by selecting _Manage Trial_ in the upper right corner and then selecting _Configurations_.
 
 ![manage-trial.png](images/manage-trial2.png)
 
